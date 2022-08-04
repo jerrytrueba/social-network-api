@@ -1,6 +1,6 @@
 const { Thoughts, User } = require('../models');
 
-const thoughtsControllers = {
+thoughtsControllers = {
     getThoughts(req, res) {
         Thoughts.find({})
         .populate({
