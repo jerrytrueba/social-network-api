@@ -1,28 +1,25 @@
 const { Schema, model } = require('mongoose');
+const dayjs = require('dayjs');
 
-const UserSchema = new Schema(
+const UserSchema = new Schema (
     {
         username: {
             type: String,
-            required: true,
-            trim: true,
-            unique: true
+            unique: true,
+            required: 'You must enter a username.',
+            trim: true
         },
         email: {
             type: String,
-            required: true,
             unique: true,
-            validate: {
-                validator: function (v) {
-                    return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(v);
-                },
-                message: props => `${props.value} is not a valid email!`
-            }
+            required: 'You must enter an email address.',
+            match: [/.+@.+\..+/, 'Please enter a valid e-mail address'],
+            trim: true
         },
         thoughts: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Thoughts'
+                ref: 'Thought'
             }
         ],
         friends: [
@@ -30,14 +27,21 @@ const UserSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             }
-        ]
+        ],
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: createdAtVal => dayjs(createdAtVal).format('MMM DD, YYYY h:mm a')
+        }
     },
     {
         toJSON: {
-            virtuals: true
-        }
+            virtuals: true,
+            getters: true
+        },
+        id: false
     }
-);
+); 
 
 UserSchema.virtual('friendCount').get(function () {
     return this.friends.length;
