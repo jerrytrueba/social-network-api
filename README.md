@@ -1,6 +1,6 @@
 # Social-Network-API
 
-# Gihub Repository
+# Github Repository
 
 https://github.com/jerrytrueba/social-network-api
 
