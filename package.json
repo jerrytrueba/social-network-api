@@ -1,0 +1,32 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "dayjs": "^1.9.7",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.1",
+    "nodemon": "^2.0.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerrytrueba/social-network-api.git"
+  },
+  "keywords": [
+    "social",
+    "network"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerrytrueba/social-network-api/issues"
+  },
+  "homepage": "https://github.com/jerrytrueba/social-network-api#readme"
+}
